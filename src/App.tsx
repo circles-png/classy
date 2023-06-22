@@ -1,20 +1,40 @@
-import { useRef, useState } from 'react'
+import { CheckCircleIcon, MapPinIcon } from '@heroicons/react/24/solid'
 import classNames from 'utils/classNames'
+import { useState } from 'react'
 
 const App = () => {
-  const loginScreen = useRef<HTMLDivElement>(null),
-        schools: { [school: string]: string } = {
-          'Baulkham Hills High School'         : 'hover:bg-orange-400',
-          'Girraween High School'              : 'hover:bg-amber-400',
-          'Hornsby Girls High School'          : 'hover:bg-blue-400',
-          'James Ruse Agricultural High School': 'hover:bg-green-400'
-        },
+  const schools = [
+    {
+      hoverStyle: 'hover:bg-orange-200',
+      location  : 'Baulkham Hills',
+      name      : 'Baulkham Hills High School'
+    },
+    {
+      hoverStyle: 'hover:bg-amber-200',
+      location  : 'Girraween',
+      name      : 'Girraween High School'
+    },
+    {
+      hoverStyle: 'hover:bg-blue-200',
+      location  : 'Hornsby',
+      name      : 'Hornsby Girls High School'
+    },
+    {
+      hoverStyle: 'hover:bg-green-200',
+      location  : 'Carlingford',
+      name      : 'James Ruse Agricultural High School'
+    }
+  ],
         [ currentSchool, setCurrentSchool ] = useState('')
 
-
   return <>
-    <div className='h-full text-center select-none overflow-hidden'>
-      <div className='grid place-content-center py-4 h-full bg-yellow-400 text-white transition-transform ease-in-out duration-[2s] relative z-10' ref={loginScreen}>
+    <div className='h-full text-center select-none overflow-clip'>
+      <div className={classNames(
+        'grid place-content-center py-4 h-full bg-classy-300 text-white transition-transform ease-in-out duration-[3s] relative z-10',
+        currentSchool === ''
+          ? 'translate-x-0'
+          : 'translate-x-[100%]'
+      )}>
         <div className='flex flex-col gap-4 sm:gap-8 sm:rounded-2xl sm:shadow-2xl sm:p-8'>
           <header className='flex flex-col gap-4 sm:gap-8'>
             <img className='w-24 h-24 sm:w-36 sm:h-36 bg-white rounded-2xl mx-auto shadow-2xl' />
@@ -22,21 +42,38 @@ const App = () => {
           </header>
           <div className='flex flex-col gap-4 sm:gap8 sm:text-xl'>
             <span className='text-lg sm:text-2xl'>Choose your school below to get started!</span>
-            <ul className='bg-yellow-500 rounded-2xl shadow-2xl p-4 divide-y [&>li:first-child>div]:rounded-t-2xl [&>li:last-child>div]:rounded-b-2xl'>
+            <ul className='bg-classy-200 text-black rounded-2xl'>
               {
                 Object.entries(schools).map(
-                  ([ school, hoverStyle ]) => <li key={school}>
+                  ([ , { hoverStyle, location, name } ]) => <li key={name}>
                     <div
                       className={classNames(
-                        'transition-all p-4 hover:font-medium',
-                        hoverStyle
+                        'transition-all p-4 rounded-2xl m-4 flex justify-between items-center',
+                        hoverStyle,
+                        currentSchool === name
+                          ? 'border-green-400 border-4 bg-classy-50'
+                          : 'bg-classy-100'
                       )}
-                      onClick={event => {
-                        loginScreen.current!.className += ' translate-x-[100%]'
-                        setCurrentSchool(event.currentTarget.textContent!)
+                      onClick={() => {
+                        if (currentSchool !== '')
+                          return
+                        setCurrentSchool(name)
                       }}
                     >
-                      {school}
+                      <div className='flex flex-col'>
+                        <span>
+                          {name}
+                        </span>
+                        <span className='items-center flex gap-2 text-gray-500'>
+                          <MapPinIcon className='inline-block w-6 h-6' />
+                          {location}
+                        </span>
+                      </div>
+                      {
+                        currentSchool === name
+                          ? <CheckCircleIcon className='inline-block w-8 h-8 text-green-400' />
+                          : null
+                      }
                     </div>
                   </li>
                 )
