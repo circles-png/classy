@@ -5,22 +5,22 @@ import { useState } from 'react'
 const App = () => {
   const schools = [
     {
-      hoverStyle: 'hover:bg-orange-200',
+      hoverStyle: 'hover:border-[#f67e03] hover:border-4',
       location  : 'Baulkham Hills',
       name      : 'Baulkham Hills High School'
     },
     {
-      hoverStyle: 'hover:bg-amber-200',
+      hoverStyle: 'hover:border-[#fbd017] hover:border-4',
       location  : 'Girraween',
       name      : 'Girraween High School'
     },
     {
-      hoverStyle: 'hover:bg-blue-200',
+      hoverStyle: 'hover:border-[#020380] hover:border-4',
       location  : 'Hornsby',
       name      : 'Hornsby Girls High School'
     },
     {
-      hoverStyle: 'hover:bg-green-200',
+      hoverStyle: 'hover:border-[#094632] hover:border-4',
       location  : 'Carlingford',
       name      : 'James Ruse Agricultural High School'
     }
