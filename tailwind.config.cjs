@@ -5,5 +5,5 @@ export default {
     './src/**/*.tsx'
   ],
   plugins: [],
-  theme  : { extend: { fontFamily: { sans: 'Red Hat Display, sans-serif' } } }
+  theme  : { extend: { fontFamily: { sans: 'Rosa Sans, sans-serif' } } }
 }

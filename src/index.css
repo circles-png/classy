@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Red Hat Display';
-    src: url('/fonts/RedHatDisplay.ttf')
+    font-family: 'Rosa Sans';
+    src: url('/fonts/RosaSans.ttf')
 }
