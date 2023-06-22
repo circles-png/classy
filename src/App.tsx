@@ -42,7 +42,7 @@ const App = () => {
           </header>
           <div className='flex flex-col gap-4 sm:gap8 sm:text-xl'>
             <span className='text-lg sm:text-2xl'>Choose your school below to get started!</span>
-            <ul className='bg-classy-200 text-black rounded-2xl'>
+            <ul className='bg-classy-200 text-classy-800 rounded-2xl'>
               {
                 Object.entries(schools).map(
                   ([ , { hoverStyle, location, name } ]) => <li key={name}>
@@ -64,7 +64,7 @@ const App = () => {
                         <span>
                           {name}
                         </span>
-                        <span className='items-center flex gap-2 text-gray-500'>
+                        <span className='items-center flex gap-2 text-classy-400'>
                           <MapPinIcon className='inline-block w-6 h-6' />
                           {location}
                         </span>
